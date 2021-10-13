@@ -10,17 +10,17 @@
         </menu-item>
         <menu-item
             label="Files"
-            to="/files"
+            to="/admin/files"
         >
         </menu-item>
         <menu-item
             label="HTML Snippets"
-            to="/snippets"
+            to="/admin/snippets"
         >
         </menu-item>
         <menu-item
             label="Links"
-            to="/links"
+            to="/admin/links"
         >
         </menu-item>
     </div>
