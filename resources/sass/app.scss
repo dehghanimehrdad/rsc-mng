@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.router-link {
+    @apply flex;
+    @apply items-center;
+    @apply px-4;
+    @apply py-3;
+    @apply transition;
+    @apply ease-in-out;
+    @apply duration-150;
+    @apply font-medium;
+
+    &:focus {
+        @apply outline-none bg-gray-700;
+    }
+
+    &.router-link-desktop {
+        @apply text-sm leading-5;
+    }
+
+    &.router-link-mobile {
+        @apply text-base leading-6;
+    }
+
+    &.router-link-active,
+    &.router-link-exact-active {
+        @apply text-white bg-gray-900;
+    }
+
+    &:not(.router-link-active),
+    &:not(.router-link-exact-active), {
+        @apply text-gray-300;
+
+        &:hover {
+            @apply text-white bg-gray-700;
+        }
+
+        &:focus {
+            @apply text-white bg-gray-700;
+        }
+    }
+}
