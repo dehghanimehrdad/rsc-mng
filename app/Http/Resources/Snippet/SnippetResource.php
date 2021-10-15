@@ -5,7 +5,7 @@ namespace App\Http\Resources\Snippet;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Snippet extends JsonResource
+class SnippetResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
