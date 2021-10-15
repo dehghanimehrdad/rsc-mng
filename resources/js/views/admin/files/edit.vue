@@ -191,7 +191,7 @@ export default {
             self.loading = true;
 
             formData.append('title', self.file.title);
-            formData.append('file', self.file.file);
+            if(self.file.hasOwnProperty('file')) formData.append('file', self.file.file);
 
             formData.append("_method", "put");
 

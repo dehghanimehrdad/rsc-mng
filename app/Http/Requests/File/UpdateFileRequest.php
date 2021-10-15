@@ -25,7 +25,7 @@ class UpdateFileRequest extends FormRequest
     {
         return [
             'title' => ['required', 'max:200'],
-            'file' => ['mimes:pdf'],
+            'file' => ['mimes:pdf', 'nullable'],
         ];
     }
 
