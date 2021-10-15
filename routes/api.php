@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Admin\FileController as AdminFileController;
 use App\Http\Controllers\Api\Admin\SnippetController as AdminSnippetController;
+use App\Http\Controllers\Api\Admin\LinkController as AdminLinkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,7 @@ use App\Http\Controllers\Api\Admin\SnippetController as AdminSnippetController;
 Route::group(['prefix' => 'admin'], static function () {
     Route::apiResource('files', AdminFileController::class);
     Route::apiResource('snippets', AdminSnippetController::class);
+    Route::apiResource('links', AdminLinkController::class);
 });
 
 
