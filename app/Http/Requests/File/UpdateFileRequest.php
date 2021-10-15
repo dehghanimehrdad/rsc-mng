@@ -25,7 +25,7 @@ class UpdateFileRequest extends FormRequest
     {
         return [
             'title' => ['required', 'max:200'],
-            'file' => ['required','mimes:pdf'],
+            'file' => ['mimes:pdf'],
         ];
     }
 
@@ -37,7 +37,6 @@ class UpdateFileRequest extends FormRequest
     public function messages()
     {
         return [
-            'file.required' => __('The :attribute field is required', ['attribute' => __('file')]),
             'file.mimes' => __('The :attribute field only supports PDF files', ['attribute' => __('file')]),
 
             'title.required' => __('The :attribute field is required', ['attribute' => __('title')]),
