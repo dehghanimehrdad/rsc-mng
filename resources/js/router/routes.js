@@ -1,6 +1,8 @@
 // Routes used by application front-end are configured here
 import AdminLayout from "../views/layouts/admin";
+import VisitorLayout from "../views/layouts/visitor";
 import HomePage from "../views/home.vue";
+import SnippetShow from "../views/snippets/show.vue";
 
 import AdminFilesList from "../views/admin/files/list";
 import AdminFileCreate from "../views/admin/files/create";
@@ -17,8 +19,12 @@ import AdminLinkEdit from "../views/admin/links/edit";
 const routes = [
     {
         path: '',
-        component: HomePage,
-        name: 'home'
+        component: VisitorLayout,
+        name: 'visitor',
+        children: [
+            {path: '', component: HomePage},
+            {path: 'snippets/:id', component: SnippetShow},
+        ]
     },
     {
         path: '/admin',
