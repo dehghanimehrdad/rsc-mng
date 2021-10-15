@@ -11,6 +11,10 @@ import AdminSnippetsList from "../views/admin/snippets/list";
 import AdminSnippetCreate from "../views/admin/snippets/create";
 import AdminSnippetEdit from "../views/admin/snippets/edit";
 
+import AdminLinksList from "../views/admin/links/list";
+import AdminLinkCreate from "../views/admin/links/create";
+import AdminLinkEdit from "../views/admin/links/edit";
+
 const routes = [
     {
         path: '',
@@ -34,6 +38,11 @@ const routes = [
             {path: 'snippets', component: AdminSnippetsList},
             {path: 'snippets/create', component: AdminSnippetCreate},
             {path: 'snippets/:id/edit', component: AdminSnippetEdit},
+
+            //link
+            {path: 'links', component: AdminLinksList},
+            {path: 'links/create', component: AdminLinkCreate},
+            {path: 'links/:id/edit', component: AdminLinkEdit},
         ]
     }
 ]
