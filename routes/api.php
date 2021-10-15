@@ -24,5 +24,6 @@ Route::group(['prefix' => 'admin'], static function () {
     Route::apiResource('links', AdminLinkController::class);
 });
 Route::get('resources', [ResourceController::class, 'index']);
+Route::get('resources/snippets/{id}', [ResourceController::class, 'getSnippet']);
 
 

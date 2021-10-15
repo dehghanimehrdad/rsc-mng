@@ -10,6 +10,7 @@ use App\Models\Link;
 use App\Models\Snippet;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class ResourceController extends Controller
 {
@@ -33,5 +34,18 @@ class ResourceController extends Controller
             'links' => LinkResource::collection($links),
             'snippets' => SnippetResource::collection($snippets),
         ]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  integer  $id
+     * @return JsonResponse
+     */
+    public function getSnippet($id): JsonResponse
+    {
+        //fetch snippet from database
+        $snippet = Snippet::findOrFail($id);
+        return response()->json(new SnippetResource($snippet));
     }
 }
