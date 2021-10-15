@@ -8,6 +8,14 @@
                             Resources
                         </h2>
                     </div>
+                    <div class="mt-4 flex md:mt-0 md:ml-4">
+                        <a
+                            href="/admin"
+                            class="btn btn-red shadow-sm rounded-md"
+                        >
+                            Admin
+                        </a>
+                    </div>
                 </div>
             </div>
         </header>
