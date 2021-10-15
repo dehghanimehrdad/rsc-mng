@@ -25,7 +25,8 @@ class StoreSnippetRequest extends FormRequest
     {
         return [
             'title' => ['required', 'max:200'],
-            'file' => ['required','mimes:pdf'],
+            'description' => ['required'],
+            'content' => ['required'],
         ];
     }
 
@@ -37,11 +38,12 @@ class StoreSnippetRequest extends FormRequest
     public function messages()
     {
         return [
-            'file.required' => __('The :attribute field is required', ['attribute' => __('file')]),
-            'file.mimes' => __('The :attribute field only supports PDF files', ['attribute' => __('file')]),
-
             'title.required' => __('The :attribute field is required', ['attribute' => __('title')]),
             'title.max' => __('The :attribute may not be greater than :max characters', ['attribute' => __('title'), 'max' => 50]),
+
+            'description.required' => __('The :attribute field is required', ['attribute' => __('description')]),
+
+            'content.required' => __('The :attribute field is required', ['attribute' => __('content')]),
 
         ];
     }
