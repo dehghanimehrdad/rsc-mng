@@ -93,7 +93,7 @@
                                 class="btn btn-green shadow-sm rounded-md"
                                 type="submit"
                             >
-                                Upload
+                                Save
                             </button>
                         </div>
                     </div>
