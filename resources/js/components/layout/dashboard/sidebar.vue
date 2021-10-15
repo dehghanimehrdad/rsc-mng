@@ -1,7 +1,7 @@
 <template>
     <div class="flex">
         <div  class="md:hidden">
-            <div class="fixed inset-0 flex z-40">
+            <div class="flex z-40 h-screen">
                 <div class="flex flex-col">
                     <div class="h-0 flex-1 flex flex-col overflow-y-auto">
                         <nav class="flex-1 pb-4 bg-gray-800">

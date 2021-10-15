@@ -1,7 +1,6 @@
 // Routes used by application front-end are configured here
 import AdminLayout from "../views/layouts/admin";
 import HomePage from "../views/home.vue";
-import AdminPage from "../views/admin/index.vue";
 
 import AdminFilesList from "../views/admin/files/list";
 import AdminFileCreate from "../views/admin/files/create";
@@ -25,10 +24,8 @@ const routes = [
         path: '/admin',
         component: AdminLayout,
         name: 'admin',
+        redirect:'/admin/files',
         children: [
-            //index
-            {path: '', component: AdminPage},
-
             //files
             {path: 'files', component: AdminFilesList},
             {path: 'files/create', component: AdminFileCreate},

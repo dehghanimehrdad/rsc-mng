@@ -4,11 +4,6 @@
             Administration
         </div>
         <menu-item
-            label="Home"
-            to="/"
-        >
-        </menu-item>
-        <menu-item
             label="Files"
             to="/admin/files"
         >
