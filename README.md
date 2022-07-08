@@ -27,6 +27,12 @@ Run the migrations:
  ```
 php artisan migrate
  ```
+
+(Optionally) if you want to seed the database run:
+ ```
+php artisan migrate:fresh --seed
+ ```
+
 Run the following command to generate App keys:
  ```
 php artisan key:generate
