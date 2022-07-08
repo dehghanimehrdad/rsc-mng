@@ -221,7 +221,7 @@ export default {
             axios.get('/api/resources').then(function (response) {
                 self.loading = false;
                 response.data.resources.forEach(function(resource) {
-                    console.log(resource.type);
+                    //push resources to the related lists according to the type
                     switch (resource.type){
                         case 'File':
                             self.filesList.push(resource);

@@ -79,6 +79,7 @@ export default {
             const self = this;
             self.loading = true;
             axios.get('/api/resources/' + self.$route.params.id).then(function (response) {
+                //redirect user to resources page if the current resource is not a snippet
                 if (response.data.type != 'Snippet'){
                     self.$router.replace('/');
                 }
