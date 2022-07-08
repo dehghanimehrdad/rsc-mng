@@ -3,49 +3,44 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 px-5">
             <div class="md:flex md:items-center md:justify-between">
                 <div class="flex-1 min-w-0">
-                    <h1 class="py-0.5 text-2xl font-semibold text-gray-900">Links</h1>
+                    <h1 class="py-0.5 text-2xl font-semibold text-gray-900">Resources</h1>
                 </div>
                 <div class="mt-4 flex md:mt-0 md:ltr:ml-4 md:rtl:mr-4">
                     <router-link
                         class="btn btn-blue shadow-sm rounded-md"
-                        to="/admin/links/create"
+                        to="/admin/resources/create"
                     >
-                        Create new Link
+                        New resource
                     </router-link>
                 </div>
             </div>
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="my-6 bg-white shadow overflow-hidden sm:rounded-md">
-                <template v-if="linksList.length > 0">
+                <template v-if="resourceList.length > 0">
                     <ul>
-                        <template v-for="(link, index) in linksList">
+                        <template v-for="(resource, index) in resourceList">
                             <li :class="{'border-t border-gray-200': index !== 0}">
                                 <div class="flex items-center px-4 py-4 sm:px-6">
-                                        <div class="min-w-0 flex-1 flex items-center">
-                                            <div class="min-w-0 flex-1 ltr:mr-4 rtl:ml-4 lg:grid lg:grid-cols-2 lg:gap-4">
-                                                <div>
-                                                    <div class="text-sm font-medium leading-5 text-gray-800 truncate">{{ link.title }}</div>
-                                                    <div class="text-sm font-medium leading-5 text-gray-400 truncate">{{ link.open_in_new_tab == 1 ? "New Tab" : "Same page" }}</div>
-                                                </div>
-                                                <div class="flex justify-end">
-                                                    <a
-                                                        target="_blank"
-                                                        class="btn btn-secondary shadow-sm  mr-0.5"
-                                                        :href="link.url"
-                                                    >
-                                                        View
-                                                    </a>
-                                                    <router-link
-                                                        :to="'/admin/links/' + link.id + '/edit'"
-                                                        class="btn btn-green shadow-sm mr-0.5"
-                                                    >
-                                                        Edit
-                                                    </router-link>
-                                                </div>
+                                    <div class="min-w-0 flex-1 flex items-center">
+                                        <div class="min-w-0 flex-1 ltr:mr-4 rtl:ml-4 lg:grid lg:grid-cols-3 lg:gap-4">
+                                            <div>
+                                                <div class="text-sm font-medium leading-5 text-gray-800 truncate">{{ resource.type }}</div>
+                                            </div>
+                                            <div class="flex justify-center">
+                                              <div class="text-sm font-medium leading-5 text-gray-800 truncate">{{ resource.title }}</div>
+                                            </div>
+                                            <div class="flex justify-end">
+                                                <router-link
+                                                    :to="'/admin/resources/' + resource.id + '/edit'"
+                                                    class="btn btn-green shadow-sm mr-0.5"
+                                                >
+                                                    Edit
+                                                </router-link>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                             </li>
                         </template>
                     </ul>
@@ -73,25 +68,24 @@ export default {
     data() {
         return {
             loading: true,
-            linksList: []
+            resourceList: {}
         }
     },
     mounted() {
-        //load snippets when mounted
-        this.getLinks();
+        //load resources when mounted
+        this.getResources();
     },
     methods: {
-        getLinks() {
-
+      getResources() {
             const self = this;
 
             //set loading state to true
             self.loading = true;
 
             //call api for resources
-            axios.get('/api/admin/links').then(function (response) {
+            axios.get('/api/admin/resources').then(function (response) {
                 //set items and then reset loading
-                self.linksList = response.data.items;
+                self.resourceList = response.data.items;
                 self.loading = false;
             }).catch(function () {
                 //reset loading
