@@ -4,18 +4,8 @@
             Administration
         </div>
         <menu-item
-            label="Files"
-            to="/admin/files"
-        >
-        </menu-item>
-        <menu-item
-            label="HTML Snippets"
-            to="/admin/snippets"
-        >
-        </menu-item>
-        <menu-item
-            label="Links"
-            to="/admin/links"
+            label="Resources"
+            to="/admin/resources"
         >
         </menu-item>
     </div>
