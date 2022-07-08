@@ -78,7 +78,10 @@ export default {
         getSnippet() {
             const self = this;
             self.loading = true;
-            axios.get('/api/resources/snippets/' + self.$route.params.id).then(function (response) {
+            axios.get('/api/resources/' + self.$route.params.id).then(function (response) {
+                if (response.data.type != 'Snippet'){
+                    self.$router.replace('/');
+                }
                 self.loading = false;
                 self.snippet = response.data;
             }).catch(function () {

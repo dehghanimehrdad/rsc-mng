@@ -51,7 +51,7 @@
                                                                                     <div class="flex justify-end">
                                                                                         <a
                                                                                             class="btn btn-green shadow-sm  mr-0.5"
-                                                                                            :href="file.url"
+                                                                                            :href="file.file_url"
                                                                                         >
                                                                                             Download
                                                                                         </a>
@@ -220,9 +220,20 @@ export default {
             self.loading = true;
             axios.get('/api/resources').then(function (response) {
                 self.loading = false;
-                self.filesList = response.data.files;
-                self.linksList = response.data.links;
-                self.snippetsList = response.data.snippets;
+                response.data.resources.forEach(function(resource) {
+                    console.log(resource.type);
+                    switch (resource.type){
+                        case 'File':
+                            self.filesList.push(resource);
+                            break;
+                        case 'Link':
+                            self.linksList.push(resource);
+                            break;
+                        case 'Snippet':
+                            self.snippetsList.push(resource);
+                            break;
+                    }
+                });
             }).catch(function () {
                 self.loading = false;
             });
