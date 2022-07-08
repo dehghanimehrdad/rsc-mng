@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
+use App\Traits\Resourceable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
 /**
@@ -16,13 +16,9 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  */
-class File extends Model
+class File extends Resource
 {
-    use HasFactory;
+    use HasFactory, Resourceable;
+    public $timestamps = false;
 
-    protected $fillable = [
-        'title',
-        'disk',
-        'path'
-    ];
 }

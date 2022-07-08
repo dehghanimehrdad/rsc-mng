@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
+use App\Traits\Resourceable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
 /**
@@ -16,13 +16,8 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  */
-class Link extends Model
+class Link extends Resource
 {
-    use HasFactory;
-
-    protected $fillable = [
-        'title',
-        'url',
-        'open_in_new_tab'
-    ];
+    use HasFactory, Resourceable;
+    public $timestamps = false;
 }

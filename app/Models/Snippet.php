@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
+use App\Traits\Resourceable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
 /**
@@ -17,16 +17,11 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  */
-class Snippet extends Model
+class Snippet extends Resource
 {
-    const TYPE_HTML = 'html';
+    use HasFactory, Resourceable;
 
-    use HasFactory;
+    public $timestamps = false;
 
-    protected $fillable = [
-        'title',
-        'description',
-        'type',
-        'content'
-    ];
+
 }
