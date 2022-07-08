@@ -19,7 +19,4 @@ use App\Http\Controllers\Api\ResourceController as ResourceController;
 Route::group(['prefix' => 'admin'], static function () {
     Route::apiResource('resources', AdminResourceController::class);
 });
-Route::get('resources', [ResourceController::class, 'index']);
-Route::get('resources/snippets/{id}', [ResourceController::class, 'getSnippet']);
-
-
+Route::apiResource('resources', ResourceController::class, ['only' => ['index', 'show']]);
