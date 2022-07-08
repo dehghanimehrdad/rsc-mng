@@ -1,9 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\Admin\FileController as AdminFileController;
-use App\Http\Controllers\Api\Admin\SnippetController as AdminSnippetController;
-use App\Http\Controllers\Api\Admin\LinkController as AdminLinkController;
+use App\Http\Controllers\Api\AdminResourceController as AdminResourceController;
 
 use App\Http\Controllers\Api\ResourceController as ResourceController;
 
@@ -19,9 +17,7 @@ use App\Http\Controllers\Api\ResourceController as ResourceController;
 */
 
 Route::group(['prefix' => 'admin'], static function () {
-    Route::apiResource('files', AdminFileController::class);
-    Route::apiResource('snippets', AdminSnippetController::class);
-    Route::apiResource('links', AdminLinkController::class);
+    Route::apiResource('resources', AdminResourceController::class);
 });
 Route::get('resources', [ResourceController::class, 'index']);
 Route::get('resources/snippets/{id}', [ResourceController::class, 'getSnippet']);
