@@ -19,7 +19,8 @@ class SnippetTest extends TestCase
      */
     public function can_create_snippet()
     {
-        $response = $this->post('/api/admin/snippets', [
+        $response = $this->post('/api/admin/resources', [
+            'type' => 'Snippet',
             'title' => 'test snippet',
             'description' => 'This is a test snippet.',
             'content' => 'This is a test snippet content.',
@@ -36,7 +37,8 @@ class SnippetTest extends TestCase
      */
     public function can_update_file()
     {
-        $this->post('/api/admin/snippets', [
+        $this->post('/api/admin/resources', [
+            'type' => 'Snippet',
             'title' => 'test snippet',
             'description' => 'This is a test snippet.',
             'content' => 'This is a test snippet content.',
@@ -44,7 +46,8 @@ class SnippetTest extends TestCase
 
         $snippet = Snippet::first();
 
-        $response = $this->patch('/api/admin/snippets/'.$snippet->id, [
+        $response = $this->patch('/api/admin/resources/'.$snippet->resource->id, [
+            'type' => 'Snippet',
             'title' => 'test snippet',
             'description' => 'This is a test snippet.',
             'content' => 'This is a test snippet content.',
@@ -61,7 +64,8 @@ class SnippetTest extends TestCase
      */
     public function can_delete_snippet()
     {
-        $this->post('/api/admin/snippets', [
+        $this->post('/api/admin/resources', [
+            'type' => 'Snippet',
             'title' => 'test snippet',
             'description' => 'This is a test snippet.',
             'content' => 'This is a test snippet content.',
@@ -69,7 +73,7 @@ class SnippetTest extends TestCase
 
         $snippet = Snippet::first();
 
-        $response = $this->delete('/api/admin/snippets/'.$snippet->id);
+        $response = $this->delete('/api/admin/resources/'.$snippet->resource->id);
 
         $response->assertOk();
     }
@@ -82,7 +86,8 @@ class SnippetTest extends TestCase
      */
     public function can_view_snippet()
     {
-        $this->post('/api/admin/snippets', [
+        $this->post('/api/admin/resources', [
+            'type' => 'Snippet',
             'title' => 'test snippet',
             'description' => 'This is a test snippet.',
             'content' => 'This is a test snippet content.',
@@ -90,7 +95,7 @@ class SnippetTest extends TestCase
 
         $snippet = Snippet::first();
 
-        $response = $this->get('/api/admin/snippets/'.$snippet->id);
+        $response = $this->get('/api/admin/resources/'.$snippet->resource->id);
 
         $response->assertOk();
     }

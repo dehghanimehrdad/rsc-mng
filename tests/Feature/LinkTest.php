@@ -20,7 +20,8 @@ class LinkTest extends TestCase
      */
     public function can_create_link()
     {
-        $response = $this->post('/api/admin/links', [
+        $response = $this->post('/api/admin/resources', [
+            'type' => 'Link',
             'title' => 'This is a test link.',
             'url' => 'https://www.remotecompany.com/',
             'open_in_new_tab' => true,
@@ -37,7 +38,8 @@ class LinkTest extends TestCase
      */
     public function can_update_link()
     {
-        $this->post('/api/admin/links', [
+        $this->post('/api/admin/resources', [
+            'type' => 'Link',
             'title' => 'This is a test link.',
             'url' => 'https://www.remotecompany.com/',
             'open_in_new_tab' => true,
@@ -45,7 +47,8 @@ class LinkTest extends TestCase
 
         $link = Link::first();
 
-        $response = $this->patch('/api/admin/links/'.$link->id, [
+        $response = $this->patch('/api/admin/resources/'.$link->resource->id, [
+            'type' => 'Link',
             'title' => 'This is a test link.',
             'url' => 'https://www.remotecompany.com/',
             'open_in_new_tab' => true,
@@ -62,7 +65,8 @@ class LinkTest extends TestCase
      */
     public function can_delete_link()
     {
-        $this->post('/api/admin/links', [
+        $this->post('/api/admin/resources', [
+            'type' => 'Link',
             'title' => 'This is a test link.',
             'url' => 'https://www.remotecompany.com/',
             'open_in_new_tab' => true,
@@ -70,7 +74,7 @@ class LinkTest extends TestCase
 
         $link = Link::first();
 
-        $response = $this->delete('/api/admin/links/'.$link->id);
+        $response = $this->delete('/api/admin/resources/'.$link->resource->id);
 
         $response->assertOk();
     }
@@ -83,7 +87,8 @@ class LinkTest extends TestCase
      */
     public function can_view_link()
     {
-        $this->post('/api/admin/links', [
+        $this->post('/api/admin/resources', [
+            'type' => 'Link',
             'title' => 'This is a test link.',
             'url' => 'https://www.remotecompany.com/',
             'open_in_new_tab' => true,
@@ -91,7 +96,7 @@ class LinkTest extends TestCase
 
         $link = Link::first();
 
-        $response = $this->get('/api/admin/links/'.$link->id);
+        $response = $this->get('/api/admin/resources/'.$link->resource->id);
 
         $response->assertOk();
     }

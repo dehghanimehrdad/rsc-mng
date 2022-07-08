@@ -20,7 +20,8 @@ class FileTest extends TestCase
      */
     public function can_create_file()
     {
-        $response = $this->post('/api/admin/files', [
+        $response = $this->post('/api/admin/resources', [
+            'type' => 'File',
             'title' => 'This is a test file.',
             'file' => UploadedFile::fake()->create('test.pdf'),
         ]);
@@ -36,15 +37,17 @@ class FileTest extends TestCase
      */
     public function can_update_file()
     {
-        $this->post('/api/admin/files', [
+        $this->post('/api/admin/resources', [
+            'type' => 'File',
             'title' => 'This is a test file.',
             'file' => UploadedFile::fake()->create('test.pdf'),
         ]);
 
         $file = File::first();
 
-        $response = $this->patch('/api/admin/files/'.$file->id, [
-            'title' => 'This is a test link.',
+        $response = $this->patch('/api/admin/resources/'.$file->id, [
+            'type' => 'File',
+            'title' => 'This is a test file 2.',
             'file' => UploadedFile::fake()->create('test2.pdf'),
         ]);
 
@@ -59,14 +62,15 @@ class FileTest extends TestCase
      */
     public function can_delete_file()
     {
-        $this->post('/api/admin/files', [
+        $this->post('/api/admin/resources', [
+            'type' => 'File',
             'title' => 'This is a test file.',
             'file' => UploadedFile::fake()->create('test.pdf'),
         ]);
 
         $file = File::first();
 
-        $response = $this->delete('/api/admin/files/'.$file->id);
+        $response = $this->delete('/api/admin/resources/'.$file->resource->id);
 
         $response->assertOk();
     }
@@ -79,14 +83,15 @@ class FileTest extends TestCase
      */
     public function can_view_file()
     {
-        $this->post('/api/admin/files', [
+        $this->post('/api/admin/resources', [
+            'type' => 'File',
             'title' => 'This is a test file.',
             'file' => UploadedFile::fake()->create('test.pdf'),
         ]);
 
         $file = File::first();
 
-        $response = $this->get('/api/admin/files/'.$file->id);
+        $response = $this->get('/api/admin/resources/'.$file->resource->id);
 
         $response->assertOk();
     }
